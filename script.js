@@ -1,32 +1,41 @@
-names = ["Isaque", "Ronald", "Alba", "Joana", "Marcelo"]
+const names = ["Isaque", "Ronald", "Alba", "Joana", "Marcelo"]
 
-filterCharactersInput = undefined
-answerContainer = undefined
-namesListDisplay = undefined
+const filterCharactersInput = document.querySelector('input')
+const answerContainer = document.querySelector('#answer-container')
+const namesListDisplay = document.querySelector('#names-list')
 
 document.addEventListener("DOMContentLoaded", () => {
-    refreshButton = document.querySelector('button[type="submit"]')
-    
-    filterCharactersInput = document.querySelector('input[name="filter-option"]')
-    answerContainer = document.querySelector('#answer-container')
-    namesListDisplay = document.querySelector('#names-list')
+    const refreshButton = document.querySelector('button[type="submit"]')
+    refreshButton.addEventListener("click", refreshAnswerMessage)
 
-    names.array.forEach(name => {
-        listElement = namesListDisplay.createElement("li")
-        listElement.innerHtml = name
+    names.forEach(name => {
+        const listElement = document.createElement("li")
+        listElement.innerHTML = name
+
+        namesListDisplay.appendChild(listElement)
+
+        console.log(listElement)
     });
 })
 
 function getAnswer() {
-    filterCharacters = filterCharactersInput.value
-    return names.array.every((name) => {name.includes(filterCharacters)})
+    const filterCharacters = filterCharactersInput.value
+    return names.every((name) => name.includes(filterCharacters))
 }
 
 function refreshAnswerMessage() {
-    answerMessage = {
+    const answerMessage = {
         true: 'O caractere está em todos os elementos do array',
         false: 'O caractere não está em todos os elementos do array'
     }
 
-    answerContainer.innerHtml = answerMessage[getAnswer()]
+    const answerColor = {
+        true: 'green',
+        false: 'red'
+    }
+
+    answer = getAnswer()
+
+    answerContainer.innerHTML = answerMessage[answer]
+    answerContainer.style.color = answerColor[answer]
 }
