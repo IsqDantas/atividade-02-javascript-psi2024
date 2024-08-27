@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
         listElement.innerHTML = name
 
         namesListDisplay.appendChild(listElement)
-
-        console.log(listElement)
     });
 })
 
