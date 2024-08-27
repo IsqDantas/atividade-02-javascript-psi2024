@@ -11,13 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     answerContainer = document.querySelector('#answer-container')
     namesListDisplay = document.querySelector('#names-list')
 
-    namesElements = []
-
     names.array.forEach(name => {
         listElement = namesListDisplay.createElement("li")
         listElement.innerHtml = name
-
-        namesElements.array.push(listElement)
     });
 })
 
